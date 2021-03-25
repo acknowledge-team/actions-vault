@@ -1,0 +1,17 @@
+name: "Acknowledge vault actions"
+description: "Github actions used to download and install Hashicorp vault"
+inputs:
+  vault_version:
+    description: "Vault version to install; enterprise version will be downloaded"
+    required: true
+    default: "1.6.3"
+runs:
+  using: "composite"
+  steps:
+    - run: echo "~/.local/bin" >> $GITHUB_PATH 
+      shell: bash
+    - run: |
+        curl https://releases.hashicorp.com/vault/${{ inputs.vault_version }}+ent/vault${{ inputs.vault_version }}+ent_linux_amd64.zip -o vault.zip
+        unzip vault.zip
+        mv vault ~/.local/bin
+      shell: bash
