@@ -11,7 +11,7 @@ runs:
     - run: echo "~/.local/bin" >> $GITHUB_PATH 
       shell: bash
     - run: |
-        curl https://releases.hashicorp.com/vault/${{ inputs.vault_version }}+ent/vault${{ inputs.vault_version }}+ent_linux_amd64.zip -o vault.zip
+        curl https://releases.hashicorp.com/vault/${{ inputs.vault_version }}+ent/vault_${{ inputs.vault_version }}+ent_linux_amd64.zip -o vault.zip
         unzip vault.zip
         mv vault ~/.local/bin
       shell: bash
